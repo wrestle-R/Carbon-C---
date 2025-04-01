@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { useCompany } from '../context/CompanyContext';
-import UserNavbar from './User/UserNavbar';
 import CompanyNavbar from './Company/CompanyNavbar';
 import Home from './User/Home';
 import Login from './Company/Login';
@@ -13,7 +12,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      {company ? <CompanyNavbar /> : <UserNavbar />}
+      
 
       <Routes>
         <Route path="/" element={<Home />} />
