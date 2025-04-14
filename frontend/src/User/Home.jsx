@@ -118,7 +118,7 @@ const Home = () => {
             <Link to="/company/login" className="bg-[#fffcdc] text-[#14281D] px-6 py-2 rounded-full font-medium hover:bg-white transition duration-300">
               Login
             </Link>
-            <Link to="/company/signup" className="bg-transparent border-2 border-[#fffcdc] text-[#fffcdc] px-6 py-2 rounded-full font-medium hover:bg-[#fffcdc] hover:text-[#14281D] transition duration-300">
+            <Link to="/company/register" className="bg-transparent border-2 border-[#fffcdc] text-[#fffcdc] px-6 py-2 rounded-full font-medium hover:bg-[#fffcdc] hover:text-[#14281D] transition duration-300">
               Sign Up
             </Link>
           </div>
@@ -144,7 +144,7 @@ const Home = () => {
               </p>
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                 <Link
-                  to="/company/signup"
+                  to="/company/register"
                   className="bg-[#fffcdc] text-[#14281D] px-8 py-3 rounded-full font-bold hover:bg-white transition-all duration-300 shadow-lg transform hover:scale-105 text-center"
                 >
                   Start Free Trial
@@ -562,7 +562,7 @@ const Home = () => {
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link
-                to="/company/signup"
+                to="/company/register"
                 className="bg-[#fffcdc] text-[#14281D] px-10 py-4 rounded-full font-bold text-lg hover:bg-white transition-all duration-300 shadow-lg transform hover:scale-105"
               >
                 Start Your Free Trial

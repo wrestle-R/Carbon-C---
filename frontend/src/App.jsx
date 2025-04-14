@@ -8,25 +8,42 @@ import Register from './Company/Register';
 import CompanyDashboard from './Company/CompanyDashboard';
 
 const App = () => {
-  const { company } = useCompany();
+  const { company, loading } = useCompany();
+
+  // Loading component to show while checking authentication
+  const LoadingScreen = () => (
+    <div className="flex items-center justify-center h-screen">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500 mx-auto mb-4"></div>
+        <p className="text-gray-600">Loading...</p>
+      </div>
+    </div>
+  );
 
   return (
     <BrowserRouter>
-      
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route 
           path="/company/login" 
-          element={company ? <Navigate to="/company/dashboard" /> : <Login />} 
+          element={
+            loading ? <LoadingScreen /> : 
+            company ? <Navigate to="/company/dashboard" /> : <Login />
+          } 
         />
         <Route 
           path="/company/register" 
-          element={company ? <Navigate to="/company/dashboard" /> : <Register />} 
+          element={
+            loading ? <LoadingScreen /> : 
+            company ? <Navigate to="/company/dashboard" /> : <Register />
+          } 
         />
         <Route 
           path="/company/dashboard" 
-          element={company ? <CompanyDashboard /> : <Navigate to="/company/login" />} 
+          element={
+            loading ? <LoadingScreen /> : 
+            company ? <CompanyDashboard /> : <Navigate to="/company/login" />
+          } 
         />
         <Route path="*" element={
           <div className="flex items-center justify-center h-screen">
