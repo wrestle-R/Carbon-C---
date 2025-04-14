@@ -11,7 +11,7 @@ const CarbonCalculator = () => {
   const cameraInputRef = useRef(null);
   
   // Use the API key from environment variables with Vite's import.meta.env
-  const apiKey = import.meta.env.VITE_GEMINI_KEY || "AIzaSyAKRz5w5VEE5XdFluRGewTi0D2K8C8iazM";
+  const apiKey = import.meta.env.VITE_GEMINI_KEY;
 
   // Carbon emission factors (kgCO2e per unit)
   const EMISSION_FACTORS = {
