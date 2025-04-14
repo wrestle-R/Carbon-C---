@@ -11,6 +11,7 @@ import {
   Legend,
   Filler
 } from 'chart.js';
+import { FaWallet, FaExchangeAlt, FaHistory, FaRupeeSign } from 'react-icons/fa';
 
 ChartJS.register(
   CategoryScale,
@@ -26,8 +27,9 @@ ChartJS.register(
 const Overview = () => {
   const emissionData = {
     total: 2450,
-    credits: 150,
-    target: -15
+    credits: 105,
+    target: -15,
+    walletAddress: '0x7a86c0b064171007716bbd6af96676935799a63e'
   };
 
   const chartData = {
@@ -44,12 +46,53 @@ const Overview = () => {
       }
     ]
   };
+  
+  // Market data for carbon credits
+  const marketData = {
+    currentPrice: 1950,
+    dailyChange: +50,
+    dailyChangePercent: 2.63,
+    weeklyAverage: 1875,
+    monthlyVolume: 12450,
+    projectedTrend: 'increasing'
+  };
+  
+  // Credit issuers for Indian market
+  const topIssuers = [
+    { name: 'Solar India Initiative', verified: true, avgPrice: 1850, rating: 4.8 },
+    { name: 'Himalayan Conservation Trust', verified: true, avgPrice: 2250, rating: 4.9 },
+    { name: 'Rajasthan Wind Farms', verified: true, avgPrice: 1950, rating: 4.7 }
+  ];
 
   return (
     <div className="space-y-8">
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-[#14281D] mb-2">Dashboard Overview</h1>
         <p className="text-gray-600">Monitor your carbon footprint and sustainability metrics</p>
+      </div>
+      
+      {/* Blockchain Wallet Status */}
+      <div className="bg-white rounded-xl shadow-md overflow-hidden border border-green-100 p-5">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center">
+            <div className="p-3 rounded-full bg-[#14281D] mr-4">
+              <FaWallet className="text-white text-xl" />
+            </div>
+            <div>
+              <h2 className="text-sm font-medium text-gray-500">Carbon Credit Wallet</h2>
+              <p className="font-mono text-xs text-[#14281D] bg-gray-100 p-1 px-2 rounded">{emissionData.walletAddress}</p>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <div className="mr-6">
+              <p className="text-sm text-gray-500">Token Balance</p>
+              <p className="text-xl font-semibold">{emissionData.credits} <span className="text-sm font-normal">tCO2e</span></p>
+            </div>
+            <button className="bg-[#14281D] text-white px-4 py-2 rounded-md text-sm hover:bg-[#3a5a40] transition-colors flex items-center">
+              <FaExchangeAlt className="mr-2" /> Trade Credits
+            </button>
+          </div>
+        </div>
       </div>
       
       {/* Stats Grid */}
@@ -89,13 +132,13 @@ const Overview = () => {
               </div>
               <div className="ml-4">
                 <h2 className="text-sm font-medium text-gray-500">Carbon Credits</h2>
-                <p className="text-2xl font-semibold text-[#588157]">{emissionData.credits} <span className="text-sm font-normal">credits</span></p>
+                <p className="text-2xl font-semibold text-[#588157]">{emissionData.credits} <span className="text-sm font-normal">tokens</span></p>
               </div>
             </div>
             <div className="mt-4">
               <div className="flex items-center justify-between">
-                <div className="text-sm text-gray-500">Available Balance</div>
-                <div className="text-sm font-medium text-[#588157]">$3,750 value</div>
+                <div className="text-sm text-gray-500">Market Value</div>
+                <div className="text-sm font-medium text-[#588157]">₹212,250</div>
               </div>
               <div className="w-full h-2 bg-gray-200 rounded-full mt-2">
                 <div className="h-full bg-[#588157] rounded-full" style={{ width: '40%' }}></div>
@@ -174,29 +217,61 @@ const Overview = () => {
         </div>
       </div>
 
-      {/* Actions Grid */}
+      {/* Carbon Credit Market Data */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white rounded-xl shadow-md p-6 border border-green-100">
-          <h3 className="text-xl font-semibold text-[#14281D] mb-4">Quick Actions</h3>
-          <div className="space-y-3">
-            <button className="w-full bg-[#14281D] text-white px-4 py-3 rounded-md font-medium hover:bg-[#3a5a40] transition-colors duration-300 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-              </svg>
-              Add Emissions Data
-            </button>
-            <button className="w-full bg-[#588157] text-white px-4 py-3 rounded-md font-medium hover:bg-[#3a5a40] transition-colors duration-300 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-              Purchase Carbon Credits
-            </button>
-            <button className="w-full bg-[#a3b18a] text-white px-4 py-3 rounded-md font-medium hover:bg-[#3a5a40] transition-colors duration-300 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              Generate Report
-            </button>
+          <h3 className="text-xl font-semibold text-[#14281D] mb-4">Carbon Credit Market</h3>
+          <div className="space-y-4">
+            <div className="flex justify-between items-center">
+              <div>
+                <p className="text-sm text-gray-500">Current Token Price</p>
+                <div className="flex items-center">
+                  <FaRupeeSign className="text-gray-700 mr-1" />
+                  <p className="text-2xl font-semibold text-gray-900">{marketData.currentPrice}</p>
+                </div>
+              </div>
+              <div className={`px-2 py-1 rounded text-sm font-medium flex items-center ${marketData.dailyChange >= 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                <span>{marketData.dailyChange >= 0 ? '↑' : '↓'}</span>
+                <span className="ml-1">{Math.abs(marketData.dailyChangePercent)}%</span>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <p className="text-xs text-gray-500">Weekly Average</p>
+                <p className="font-medium">₹{marketData.weeklyAverage}</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500">Monthly Volume</p>
+                <p className="font-medium">{marketData.monthlyVolume} tokens</p>
+              </div>
+            </div>
+            
+            <hr className="my-4" />
+            
+            <p className="text-sm font-medium">Verified Projects in India</p>
+            <div className="space-y-2">
+              {topIssuers.map((issuer, index) => (
+                <div key={index} className="flex justify-between items-center bg-gray-50 p-2 rounded">
+                  <div>
+                    <p className="text-sm font-medium text-gray-800">
+                      {issuer.name} 
+                      {issuer.verified && (
+                        <span className="ml-1 bg-blue-100 text-blue-800 text-xs px-1 py-0.5 rounded">Verified</span>
+                      )}
+                    </p>
+                    <div className="flex items-center text-xs text-amber-500 mt-0.5">
+                      {'★'.repeat(Math.floor(issuer.rating))}
+                      {issuer.rating % 1 > 0 && '☆'}
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm font-medium">₹{issuer.avgPrice}</p>
+                    <p className="text-xs text-gray-500">per token</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -215,14 +290,24 @@ const Overview = () => {
                 <p className="text-gray-700 font-medium">Purchased carbon credits</p>
                 <span className="text-xs text-gray-500">1 day ago</span>
               </div>
-              <p className="text-sm text-gray-600 mt-1">10 credits purchased for $2,500</p>
+              <p className="text-sm text-gray-600 mt-1">10 tokens purchased for ₹18,500</p>
+              <p className="text-xs text-blue-600 font-mono mt-1 hover:underline cursor-pointer">TX: 0x6723c...9a4e</p>
             </div>
-            <div className="p-3 bg-gray-50 rounded-md border-l-4 border-blue-500">
+            <div className="p-3 bg-gray-50 rounded-md border-l-4 border-purple-500">
               <div className="flex items-center justify-between">
-                <p className="text-gray-700 font-medium">New reduction target</p>
+                <p className="text-gray-700 font-medium">Tokens minted</p>
                 <span className="text-xs text-gray-500">3 days ago</span>
               </div>
-              <p className="text-sm text-gray-600 mt-1">Set annual reduction target to 15%</p>
+              <p className="text-sm text-gray-600 mt-1">5 new tokens minted from verified project</p>
+              <p className="text-xs text-blue-600 font-mono mt-1 hover:underline cursor-pointer">TX: 0x8f91b...2c7d</p>
+            </div>
+            <div className="p-3 bg-gray-50 rounded-md border-l-4 border-amber-500">
+              <div className="flex items-center justify-between">
+                <p className="text-gray-700 font-medium">BIS Certification Received</p>
+                <span className="text-xs text-gray-500">5 days ago</span>
+              </div>
+              <p className="text-sm text-gray-600 mt-1">Project verified by Bureau of Indian Standards</p>
+              <p className="text-xs text-blue-600 font-mono mt-1 hover:underline cursor-pointer">Certificate: BIS25/CCM/2341</p>
             </div>
           </div>
         </div>

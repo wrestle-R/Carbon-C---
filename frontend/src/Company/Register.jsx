@@ -50,10 +50,10 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-green-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#fffcdc] to-[#fffcdc] bg-opacity-50">
       <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900">Register Your Company</h2>
+          <h2 className="text-2xl font-bold text-[#14281D]">Register Your Company</h2>
           <p className="text-sm text-gray-600">Fill in the details below to create an account.</p>
         </div>
 
@@ -72,7 +72,7 @@ const Register = () => {
               <input
                 type="text"
                 required
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#14281D] focus:border-[#14281D] sm:text-sm"
                 value={formData.token}
                 onChange={(e) => setFormData({...formData, token: e.target.value})}
                 placeholder="Enter your registration token"
@@ -86,7 +86,7 @@ const Register = () => {
               <input
                 type="text"
                 required
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#14281D] focus:border-[#14281D] sm:text-sm"
                 value={formData.companyName}
                 onChange={(e) => setFormData({...formData, companyName: e.target.value})}
                 placeholder="Enter your company name"
@@ -100,7 +100,7 @@ const Register = () => {
               <input
                 type="email"
                 required
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#14281D] focus:border-[#14281D] sm:text-sm"
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
                 placeholder="Enter your email address"
@@ -114,7 +114,7 @@ const Register = () => {
               <input
                 type="password"
                 required
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#14281D] focus:border-[#14281D] sm:text-sm"
                 value={formData.password}
                 onChange={(e) => setFormData({...formData, password: e.target.value})}
                 placeholder="Enter your password"
@@ -128,7 +128,7 @@ const Register = () => {
               <input
                 type="password"
                 required
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#14281D] focus:border-[#14281D] sm:text-sm"
                 value={formData.confirmPassword}
                 onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
                 placeholder="Confirm your password"
@@ -141,7 +141,7 @@ const Register = () => {
               </label>
               <select
                 required
-                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md"
+                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-[#14281D] focus:border-[#14281D] sm:text-sm rounded-md"
                 value={formData.industry}
                 onChange={(e) => setFormData({...formData, industry: e.target.value})}
               >
@@ -159,7 +159,7 @@ const Register = () => {
             type="submit"
             disabled={loading}
             className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md text-white ${
-              loading ? 'bg-gray-400' : 'bg-green-600 hover:bg-green-700'
+              loading ? 'bg-gray-400' : 'bg-[#14281D] hover:bg-[#3a5a40]'
             }`}
           >
             {loading ? 'Registering...' : 'Register'}
@@ -168,7 +168,7 @@ const Register = () => {
           <div className="text-center space-y-3">
             <p className="text-sm text-gray-600">
               Already have an account?{' '}
-              <Link to="/company/login" className="font-medium text-green-600 hover:text-green-500">
+              <Link to="/company/login" className="font-medium text-[#14281D] hover:text-[#3a5a40]">
                 Sign in here
               </Link>
             </p>
@@ -183,7 +183,7 @@ const Register = () => {
             <button
               type="button"
               onClick={handlePermissionRequest}
-              className="text-sm text-blue-600 hover:text-blue-700 underline focus:outline-none"
+              className="text-sm text-[#14281D] hover:text-[#3a5a40] underline focus:outline-none"
             >
               Request Permission to Register
             </button>

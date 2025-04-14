@@ -12,7 +12,7 @@ const CompanyNavbar = () => {
   };
 
   return (
-    <nav className="bg-green-700 shadow-lg">
+    <nav className="bg-[#14281D] shadow-lg">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
@@ -21,13 +21,13 @@ const CompanyNavbar = () => {
             </Link>
           </div>
           <div className="flex items-center space-x-6">
-            <Link to="/company/dashboard" className="text-white hover:text-green-200">
+            <Link to="/company/dashboard" className="text-white hover:text-[#fffcdc]">
               Dashboard
             </Link>
-            <Link to="/company/emissions" className="text-white hover:text-green-200">
+            <Link to="/company/emissions" className="text-white hover:text-[#fffcdc]">
               Emissions
             </Link>
-            <Link to="/company/credits" className="text-white hover:text-green-200">
+            <Link to="/company/credits" className="text-white hover:text-[#fffcdc]">
               Carbon Credits
             </Link>
             <span className="text-white">
@@ -35,7 +35,7 @@ const CompanyNavbar = () => {
             </span>
             <button 
               onClick={handleLogout}
-              className="bg-white text-green-700 px-4 py-2 rounded-md hover:bg-green-100"
+              className="bg-[#fffcdc] text-[#14281D] px-4 py-2 rounded-md hover:bg-white"
             >
               Logout
             </button>

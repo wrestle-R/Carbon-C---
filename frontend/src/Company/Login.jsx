@@ -40,10 +40,10 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-green-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#fffcdc] to-[#fffcdc] bg-opacity-50">
       <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-[#14281D]">
             Welcome Back
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
@@ -66,7 +66,7 @@ const Login = () => {
               <input
                 type="email"
                 required
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#14281D] focus:border-[#14281D] sm:text-sm"
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
               />
@@ -78,7 +78,7 @@ const Login = () => {
               <input
                 type="password"
                 required
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#14281D] focus:border-[#14281D] sm:text-sm"
                 value={formData.password}
                 onChange={(e) => setFormData({...formData, password: e.target.value})}
               />
@@ -89,14 +89,14 @@ const Login = () => {
             <div className="flex items-center">
               <input
                 type="checkbox"
-                className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+                className="h-4 w-4 text-[#14281D] focus:ring-[#14281D] border-gray-300 rounded"
               />
               <label className="ml-2 block text-sm text-gray-900">
                 Remember me
               </label>
             </div>
             <div className="text-sm">
-              <a href="#" className="font-medium text-green-600 hover:text-green-500">
+              <a href="#" className="font-medium text-[#14281D] hover:text-[#3a5a40]">
                 Forgot password?
               </a>
             </div>
@@ -106,7 +106,7 @@ const Login = () => {
             type="submit"
             disabled={loading}
             className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md text-white ${
-              loading ? 'bg-gray-400' : 'bg-green-600 hover:bg-green-700'
+              loading ? 'bg-gray-400' : 'bg-[#14281D] hover:bg-[#3a5a40]'
             }`}
           >
             {loading ? 'Signing in...' : 'Sign in'}
@@ -114,7 +114,7 @@ const Login = () => {
           
           <p className="mt-2 text-center text-sm text-gray-600">
             Don't have an account?{' '}
-            <Link to="/company/register" className="font-medium text-green-600 hover:text-green-500">
+            <Link to="/company/register" className="font-medium text-[#14281D] hover:text-[#3a5a40]">
               Register here
             </Link>
           </p>
