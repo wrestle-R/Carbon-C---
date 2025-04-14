@@ -24,12 +24,6 @@ const CompanyNavbar = () => {
             <Link to="/company/dashboard" className="text-white hover:text-[#fffcdc]">
               Dashboard
             </Link>
-            <Link to="/company/emissions" className="text-white hover:text-[#fffcdc]">
-              Emissions
-            </Link>
-            <Link to="/company/credits" className="text-white hover:text-[#fffcdc]">
-              Carbon Credits
-            </Link>
             <span className="text-white">
               Welcome, {company?.companyName || 'Company'}
             </span>
