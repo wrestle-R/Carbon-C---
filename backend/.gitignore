@@ -29,6 +29,7 @@ pids
 # Production
 /build
 /dist
+.env
 
 # IDE specific files
 .idea

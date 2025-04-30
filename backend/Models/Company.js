@@ -21,7 +21,7 @@ const companySchema = new mongoose.Schema({
   },
   registrationToken: {
     type: String,
-    required: true
+    required: true,
   },
   carbonCredits: {
     type: Number,

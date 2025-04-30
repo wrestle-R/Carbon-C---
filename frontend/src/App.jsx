@@ -1,14 +1,24 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
-import { useCompany } from '../context/CompanyContext';
+import { useCompany } from '../Context/CompanyContext';
+import { useAuth } from '../Context/UserContext';
 import CompanyNavbar from './Company/CompanyNavbar';
 import Home from './User/Home';
-import Login from './Company/Login';
-import Register from './Company/Register';
+import CompanyLogin from './Company/Login';
+import CompanyRegister from './Company/Register';
 import CompanyDashboard from './Company/CompanyDashboard';
 
+// User components
+import UserLogin from './User/Login';
+import UserRegister from './User/Register';
+import UserDashboard from './User/Dashboard';
+
 const App = () => {
-  const { company, loading } = useCompany();
+  const { company, companyLoading } = useCompany();
+  const { user, userLoading } = useAuth();
+  
+  // Combined loading state
+  const loading = companyLoading || userLoading;
 
   // Loading component to show while checking authentication
   const LoadingScreen = () => (
@@ -23,28 +33,56 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Public route */}
         <Route path="/" element={<Home />} />
+        
+        {/* Company routes */}
         <Route 
           path="/company/login" 
           element={
             loading ? <LoadingScreen /> : 
-            company ? <Navigate to="/company/dashboard" /> : <Login />
+            company ? <Navigate to="/company/dashboard" /> : <CompanyLogin />
           } 
         />
         <Route 
           path="/company/register" 
           element={
             loading ? <LoadingScreen /> : 
-            company ? <Navigate to="/company/dashboard" /> : <Register />
+            company ? <Navigate to="/company/dashboard" /> : <CompanyRegister />
           } 
         />
         <Route 
-          path="/company/dashboard" 
+          path="/company/dashboard/*" 
           element={
             loading ? <LoadingScreen /> : 
             company ? <CompanyDashboard /> : <Navigate to="/company/login" />
           } 
         />
+        
+        {/* User routes */}
+        <Route 
+          path="/login" 
+          element={
+            loading ? <LoadingScreen /> : 
+            user ? <Navigate to="/user/dashboard" /> : <UserLogin />
+          } 
+        />
+        <Route 
+          path="/register" 
+          element={
+            loading ? <LoadingScreen /> : 
+            user ? <Navigate to="/user/dashboard" /> : <UserRegister />
+          } 
+        />
+        <Route 
+          path="/user/dashboard/*" 
+          element={
+            loading ? <LoadingScreen /> : 
+            user ? <UserDashboard /> : <Navigate to="/login" />
+          } 
+        />
+
+        {/* 404 route */}
         <Route path="*" element={
           <div className="flex items-center justify-center h-screen">
             <div className="text-center">

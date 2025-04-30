@@ -1,13 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { CompanyProvider } from '../context/CompanyContext'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import './index.css';
+import { AuthProvider } from '../Context/UserContext';
+import { CompanyProvider } from '../Context/CompanyContext';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
     <CompanyProvider>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </CompanyProvider>
-  </StrictMode>,
-)
+  </React.StrictMode>,
+);
